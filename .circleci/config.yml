@@ -51,6 +51,9 @@ jobs:
             curl https://cli-assets.heroku.com/install.sh | sh
       - heroku/install
       - run:
+          name: Bundle install
+          command: bundle install
+      - run:
           name: Assets precompile
           command: |
             bundle exec rake assets:precompile RAILS_ENV=production
