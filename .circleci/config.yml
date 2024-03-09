@@ -45,7 +45,15 @@ jobs:
       - checkout
       - setup_remote_docker:
           version: 19.03.13
+      - run:
+          name: Install Heroku CLI
+          command: |
+            curl https://cli-assets.heroku.com/install.sh | sh
       - heroku/install
+      - run:
+          name: Assets precompile
+          command: |
+            bundle exec rake assets:precompile RAILS_ENV=production
       - run:
           name: heroku login
           command: heroku container:login
